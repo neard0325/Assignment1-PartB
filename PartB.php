@@ -17,17 +17,65 @@
       $connection = mysql_connect(DB_HOST, DB_USER, DB_PW);
       mysql_select_db("winestore", $connection);
       
+      
+      //region drop down list
       $query = "SELECT region_name from region";
       $result = mysql_query($query, $connection);
       
       echo "Choose a region:";
       echo '<select>';
-        while ($row = mysql_fetch_row($result)){
-            for($i = 0; $i < mysql_num_fields($result); $i++){
+        while ($row = mysql_fetch_array($result)){
+            for($i = 0; $i<mysql_num_fields($result);$i++){
               echo "<option value = '$row[$i]'>$row[$i]</option>";
             }
         }
       echo '</select>';
+      echo "<br />";
+      echo "<br />";
+      
+      //variety drop down list
+      $query2 = "SELECT variety from grape_variety";
+      $result2 = mysql_query($query2, $connection);
+      
+      echo "Choose a grape variety:";
+      echo '<select>';
+        while ($row2 = mysql_fetch_array($result2)){
+            for($i = 0;$i<mysql_num_fields($result2);$i++){
+              echo "<option value = 'row2[$i]'>$row2[$i]</option>";
+            }
+        }
+      echo '</select>';
+      echo "<br />";
+      echo "<br />";
+      
+      //start year drop down list
+      $query3 = "SELECT distinct year from wine order by year asc";
+      $result3 = mysql_query($query3, $connection);
+      
+      echo "Choose a start year:";
+      echo '<select>';
+        while ($row3 = mysql_fetch_array($result3)){
+            for($i = 0;$i<mysql_num_fields($result3);$i++){
+              echo "<option value = 'row3[$i]'>$row3[$i]</option>";
+            }
+        }
+      echo '</select>';
+      echo "<br />";
+      echo "<br />";
+      
+      //end year drop down list
+      $query4 = "SELECT distinct year from wine order by year asc";
+      $result4 = mysql_query($query4, $connection);
+      
+      echo "Choose a end year:";
+      echo '<select>';
+        while ($row4 = mysql_fetch_array($result4)){
+            for($i = 0;$i<mysql_num_fields($result4);$i++){
+              echo "<option value = 'row4[$i]'>$row4[$i]</option>";
+            }
+        }
+      echo '</select>';
+      echo "<br />";
       echo "<br />";
       
       
@@ -35,7 +83,7 @@
       mysql_close($connection);
 
 ?>
-      <input type ="submit" value = "Search" /> <br />
+      <input type ="submit" value = "Search" name ="submit" id ="submit"/> <br />
     </form>
   </body>
 </html>
