@@ -29,6 +29,7 @@
 		echo "Search Result as below";
 		echo "<br>";
 		echo $rowFound . " datas found in database";
+
 		echo "<table width='1250' cellpadding='5' cellspacing='5' border='2'>";
 		echo "<tr><td width = '150'><b>Name</b></td>
 				  <td width = '100'><b>Variety</b></td>
@@ -120,7 +121,7 @@
 			$query .= " AND qty > '{$MinOrder}'";
 		}
 
-		if (isset($MinCost) && isset($MinCost) && !empty($MinCost) && MinCost < MaxCost){
+		if (isset($MinCost) && !empty($MinCost) && isset($MaxCost) && !empty($MaxCost)){
 			$query .= " AND cost between '{$MinCost}' and '{$MaxCost}'";
 		}
 
