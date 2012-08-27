@@ -4,12 +4,12 @@
   </head>
   <body>
     <form action ="PartBresult.php" method ="GET">
-      A wine name(or part of a wine name):<input type = "text" name = "wine_name" id = "wine_name" /> <br /> <br />
-      A winery name (or part of a winery name):<input type = "text" name = "winery_name" id = "winery_name" /> <br /> <br />
-      A minimum number of wines in stock:<input type = "text" name = "min_stock" id = "min_stock"/> <br /> <br />
-      A minimum number of wines ordered:<input type = "text" name = "min_order" id = "min_order"/> <br /> <br />
-      A minimum dollar cost range:<input type = "text" name = "min_cost" id = "min_cost"/> <br /> <br />
-      A maximum dollar cost range:<input type = "text" name = "max_cost" id = "max_cost"/> <br /> <br />
+      A wine name(or part of a wine name):<input type = "text" name = "WineName" value = ""/> <br /> <br />
+      A winery name (or part of a winery name):<input type = "text" name = "WineryName" value = ""/> <br /> <br />
+      A minimum number of wines in stock:<input type = "text" name = "MinStock" value = ""/> <br /> <br />
+      A minimum number of wines ordered:<input type = "text" name = "MinOrder" value = ""/> <br /> <br />
+      A minimum dollar cost range:<input type = "text" name = "MinCost" value = ""/> <br /> <br />
+      A maximum dollar cost range:<input type = "text" name = "MaxCost" value = ""/> <br /> <br />
     
 <?php
       // Open the database connection
@@ -23,10 +23,10 @@
       $result = mysql_query($query, $connection);
       
       echo "Choose a region:";
-      echo "<select name = 'region_name' id = 'region_name'>";
-        while ($row = mysql_fetch_array($result)){
+      echo "<select name = 'RegionName'>";
+        while ($option = mysql_fetch_row($result)){
             for($i = 0; $i<mysql_num_fields($result);$i++){
-              echo "<option value = '$row[$i]'>$row[$i]</option>";
+              echo "<option value = '$option[$i]'>$option[$i]</option>";
             }
         }
       echo "</select>";
@@ -38,10 +38,10 @@
       $result2 = mysql_query($query2, $connection);
       
       echo "Choose a grape variety:";
-      echo "<select name = 'grape_variety' id = 'grape_variety'>";
-        while ($row2 = mysql_fetch_array($result2)){
-            for($i = 0;$i<mysql_num_fields($result2);$i++){
-              echo "<option value = 'row2[$i]'>$row2[$i]</option>";
+      echo "<select name = 'GrapeVariety'>";
+        while ($option1 = mysql_fetch_row($result2)){
+            for($i = 0; $i<mysql_num_fields($result2);$i++){
+              echo "<option value = '$option1[$i]'>$option1[$i]</option>";
             }
         }
       echo "</select>";
@@ -53,10 +53,10 @@
       $result3 = mysql_query($query3, $connection);
       
       echo "Choose a start year:";
-      echo "<select name = 'start_year' id = 'start_year'>";
-        while ($row3 = mysql_fetch_array($result3)){
-            for($i = 0;$i<mysql_num_fields($result3);$i++){
-              echo "<option value = 'row3[$i]'>$row3[$i]</option>";
+      echo "<select name = 'StartYear'>";
+        while ($option2 = mysql_fetch_row($result3)){
+            for($i = 0; $i<mysql_num_fields($result3);$i++){
+              echo "<option value = '$option2[$i]'>$option2[$i]</option>";
             }
         }
       echo "</select>";
@@ -68,10 +68,10 @@
       $result4 = mysql_query($query4, $connection);
       
       echo "Choose a end year:";
-      echo "<select name = 'end_year' id = 'end_year'>";
-        while ($row4 = mysql_fetch_array($result4)){
-            for($i = 0;$i<mysql_num_fields($result4);$i++){
-              echo "<option value = 'row4[$i]'>$row4[$i]</option>";
+      echo "<select name = 'EndYear'>";
+        while ($option3 = mysql_fetch_row($result4)){
+            for($i = 0; $i<mysql_num_fields($result4);$i++){
+              echo "<option value = '$option3[$i]'>$option3[$i]</option>";
             }
         }
       echo "</select>";
@@ -83,7 +83,7 @@
       mysql_close($connection);
 
 ?>
-      <input type ="submit" value = "Search" name ="submit" id ="submit"/> <br />
+      <input type ="submit" value = "Search" name ="submit"/> <br />
     </form>
   </body>
 </html>
